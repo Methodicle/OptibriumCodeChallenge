@@ -147,7 +147,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\PropertyColumnBase.cpp" />
+    <ClCompile Include="src\PropertyTable.cpp" />
     <ClCompile Include="src\MoleculeTable.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\PropertyColumnBase.h" />
+    <ClInclude Include="src\PropertyTable.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
