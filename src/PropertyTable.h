@@ -22,12 +22,13 @@ public:
 		return table;
 	}
 
-	void AddPropertyColumn() {};
+	void AddMolecule(std::map<std::string, T> moleculeRow) {};
 
-	void AddMolecule(std::map<std::string, T> moleculeRow) 
-	{
-		// add the row here
-	};
+	/*
+		Here the solution would be to either have an annoying amount of std::cin and allow user entry through the console.
+		Or a more elegant solution would be allowing users to submit small csv files or xml files which could be read in and converted to a new column.
+	*/
+	void AddPropertyColumn() {};
 	
 private:
 	std::map<std::string, std::map<std::string, T>> Data;

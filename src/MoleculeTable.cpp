@@ -5,20 +5,22 @@
 
 int main()
 {
-    PropertyTable table;
-    PropertyTable table2;
+    PropertyTable defaultTable;
 
-    table["Test_Drug1"]["property_1"] = std::string("hello1");
-    table["Test_Drug1"]["property_2"] = std::string("hello2");
-    table["Test_Drug1"]["property_3"] = std::string("hello3");
+    defaultTable["Paracetamol"]["Solubility"]               = 4.97;
+    defaultTable["Paracetamol"]["Molecular Weight"]         = 151;
 
-    table["Test_Drug2"]["property_1"] = 2;
-    table["Test_Drug2"]["property_2"] = std::string("hello5");
-    table["Test_Drug2"]["property_3"] = std::string("hello6");
+    defaultTable["Caffeine"]["Solubility"]                  = 5.05;
+    defaultTable["Caffeine"]["Molecular Weight"]            = 194;
 
-    PropertyTable newTable = table + table2;
+    defaultTable["Indomethacin"]["Solubility"]              = 0.4;
+    defaultTable["Indomethacin"]["Molecular Weight"]        = 358;
 
-    LogVariant(table["Test_Drug2"]["property_1"]);
+    defaultTable["Trimethoprim"]["Solubility"]              = 3.14;
+    defaultTable["Trimethoprim"]["Molecular Weight"]        = 290;
+
+
+    LogVariant(defaultTable["Caffeine"]["Molecular Weight"]);
 
     std::cin.get();
 }
