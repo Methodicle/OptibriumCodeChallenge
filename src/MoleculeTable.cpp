@@ -1,11 +1,24 @@
 #include <iostream>
+#include "PropertyTable.h"
 
-#define Log(x) std::cout << x << std::endl;
+#define LogVariant(x) std::visit([](const auto& v){ std::cout << v << " "; }, x);;
 
 int main()
 {
-    Log("hello");
+    PropertyTable table;
+    PropertyTable table2;
 
+    table["Test_Drug1"]["property_1"] = std::string("hello1");
+    table["Test_Drug1"]["property_2"] = std::string("hello2");
+    table["Test_Drug1"]["property_3"] = std::string("hello3");
+
+    table["Test_Drug2"]["property_1"] = 2;
+    table["Test_Drug2"]["property_2"] = std::string("hello5");
+    table["Test_Drug2"]["property_3"] = std::string("hello6");
+
+    PropertyTable newTable = table + table2;
+
+    LogVariant(table["Test_Drug2"]["property_1"]);
 
     std::cin.get();
 }
