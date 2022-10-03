@@ -29,6 +29,11 @@ public:
 		Or a more elegant solution would be allowing users to submit small csv files or xml files which could be read in and converted to a new column.
 	*/
 	void AddPropertyColumn() {};
+
+	const std::map<std::string, std::map<std::string, T>> GetData()
+	{
+		return Data;
+	}
 	
 private:
 	std::map<std::string, std::map<std::string, T>> Data;

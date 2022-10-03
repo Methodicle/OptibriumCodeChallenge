@@ -1,7 +1,10 @@
 #include <iostream>
 #include "PropertyTable.h"
 
-#define LogVariant(x) std::visit([](const auto& v){ std::cout << v << " "; }, x);;
+#define LogVariant(x) std::visit([](const auto& v){ std::cout << v ;}, x);
+#define Log(x) std::cout << x;
+
+void PrintTable(PropertyTable<std::variant<int, std::string, double>>& table);
 
 int main()
 {
@@ -20,10 +23,25 @@ int main()
     defaultTable["Trimethoprim"]["Molecular Weight"]        = 290;
 
 
-    LogVariant(defaultTable["Caffeine"]["Molecular Weight"]);
+    PrintTable(defaultTable);
 
     std::cin.get();
 }
+
+void PrintTable(PropertyTable<std::variant<int, std::string, double>>& table)
+{   
+    for (auto const& [drug, props] : table.GetData())
+    {
+        Log("Molecule: " + drug + "\t");
+        for (auto const& [prop, value] : props)
+        {
+            Log(prop + ": ");
+            LogVariant(value);
+            Log("\t");
+        }
+        Log("\n");
+    }
+};
 
 
 
