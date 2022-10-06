@@ -1,9 +1,9 @@
 #include <iostream>
+
 #include "PropertyTable.h"
+#include "SetArithmetic.h"
+#include "Utilities.h"
 
-
-
-void PrintTable(PropertyTable<std::variant<int, std::string, double>>& table);
 
 int main()
 {
@@ -35,13 +35,16 @@ int main()
     defaultTable2["Trimethoprim2"]["Solubility"] = 3.14;
     defaultTable2["Trimethoprim2"]["Molecular Weight"] = 290;
 
+    auto sumTab = defaultTable + defaultTable2;
+
+
     std::string propName = "Solubility";
     auto unionTab = SetUnion(defaultTable, defaultTable2, propName);
-
+    
     auto intersectTab = SetIntersection(defaultTable, defaultTable2, propName);
-
+    
     auto diffTab = SetDifference(defaultTable, defaultTable2, propName);
-
+    
 
 
 
