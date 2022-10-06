@@ -1,8 +1,7 @@
 #include <iostream>
 #include "PropertyTable.h"
 
-#define LogVariant(x) std::visit([](const auto& v){ std::cout << v ;}, x);
-#define Log(x) std::cout << x;
+
 
 void PrintTable(PropertyTable<std::variant<int, std::string, double>>& table);
 
@@ -22,26 +21,32 @@ int main()
     defaultTable["Trimethoprim"]["Solubility"]              = 3.14;
     defaultTable["Trimethoprim"]["Molecular Weight"]        = 290;
 
+    PropertyTable defaultTable2;
 
-    PrintTable(defaultTable);
+    defaultTable2["Paracetamol"]["Solubility"] = 4.97;
+    defaultTable2["Paracetamol"]["Molecular Weight"] = 151;
+
+    defaultTable2["Caffeine2"]["Solubility"] = 5.05;
+    defaultTable2["Caffeine2"]["Molecular Weight"] = 194;
+
+    defaultTable2["Indomethacin"]["Solubility"] = 0.4;
+    defaultTable2["Indomethacin"]["Molecular Weight"] = 358;
+
+    defaultTable2["Trimethoprim2"]["Solubility"] = 3.14;
+    defaultTable2["Trimethoprim2"]["Molecular Weight"] = 290;
+
+    std::string propName = "Solubility";
+    auto unionTab = SetUnion(defaultTable, defaultTable2, propName);
+
+    auto intersectTab = SetIntersection(defaultTable, defaultTable2, propName);
+
+    auto diffTab = SetDifference(defaultTable, defaultTable2, propName);
+
+
+
 
     std::cin.get();
 }
-
-void PrintTable(PropertyTable<std::variant<int, std::string, double>>& table)
-{   
-    for (auto const& [drug, props] : table.GetData())
-    {
-        Log("Molecule: " + drug + "\t");
-        for (auto const& [prop, value] : props)
-        {
-            Log(prop + ": ");
-            LogVariant(value);
-            Log("\t");
-        }
-        Log("\n");
-    }
-};
 
 
 
