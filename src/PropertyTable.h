@@ -2,6 +2,8 @@
 #include <map>
 #include <variant>
 #include <iostream>
+#include <exception>
+#include <format>
 
 #include "Utilities.h"
 
@@ -15,7 +17,7 @@
 template<typename T = std::variant<int, std::string, double>>
 class PropertyTable
 {
-public:\
+public:
 	bool HasMolecule(const std::string& molecule)
 	{
 		return m_Data.find(molecule) != m_Data.end();
@@ -80,11 +82,23 @@ public:\
 		for (auto& [molecule, props] : table)
 		{
 			// if property just add the entire row
-			if (sumTable.find(molecule) == sumTable.end())
+			if (!sumTable.HasMolecule(molecule))
 				sumTable[molecule] = props;
 			else
 			{
+				auto sumTableProps = &sumTable[molecule];
 
+				for (auto& [prop, value] : props) 
+				{
+					if ( sumTableProps->find(prop) == sumTableProps->end())
+					{
+						sumTableProps->emplace(prop, value);
+					}
+					else if ((*sumTableProps)[prop] != value) // assumption here is that properties are the same, can be changed or made specific to certain properties, add different handling if values are different in future.
+					{
+						throw std::runtime_error(std::format("Value for {}'s {} in both tables are different", molecule, prop));
+					}
+				}
 			}
 		}
 

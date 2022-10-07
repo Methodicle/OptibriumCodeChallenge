@@ -1,4 +1,5 @@
 #include <iostream>
+#include <exception>
 
 #include "PropertyTable.h"
 #include "SetArithmetic.h"
@@ -25,6 +26,7 @@ int main()
 
     defaultTable2["Paracetamol"]["Solubility"] = 4.97;
     defaultTable2["Paracetamol"]["Molecular Weight"] = 151;
+    defaultTable2["Paracetamol"]["Chemical Formula"] = "C8H9NO2";
 
     defaultTable2["Caffeine2"]["Solubility"] = 5.05;
     defaultTable2["Caffeine2"]["Molecular Weight"] = 194;
@@ -35,7 +37,17 @@ int main()
     defaultTable2["Trimethoprim2"]["Solubility"] = 3.14;
     defaultTable2["Trimethoprim2"]["Molecular Weight"] = 290;
 
-    auto sumTab = defaultTable + defaultTable2;
+    try {
+        auto sumTab = defaultTable + defaultTable2;
+        sumTab.PrintTable();
+    }
+    catch (std::runtime_error& e)
+    {
+        Log(e.what());
+    }
+    
+
+    
 
 
     std::string propName = "Solubility";
