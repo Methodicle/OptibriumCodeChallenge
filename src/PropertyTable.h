@@ -9,10 +9,6 @@
 
 
 // Table class where access is [row][col]
-// 
-//
-//
-
 
 template<typename T = std::variant<int, std::string, double>>
 class PropertyTable
@@ -53,7 +49,6 @@ public:
 		return propCol;
 	}
 
-
 	// Prints table, mainly for demonstration purposes
 	void PrintTable()
 	{
@@ -74,13 +69,16 @@ public:
 		}
 	};
 
+	// --------------------------------------------------------------------------------------------------
+	// Operator Overloads
+	// --------------------------------------------------------------------------------------------------
+	 
+
 	// Overload of [] operator for getting a map of <property, value> for a given molecue
 	std::map<std::string, T>& operator[](std::string molecule)
 	{
 		return m_Data[molecule];
 	}
-
-
 
 	// function to add tables - overload operator, deal with different size tables here
 	// if two tables have the same molecule and the same property but different values, 
@@ -120,7 +118,6 @@ public:
 
 		return sumTable;
 	}
-	
 
 	// Implemented to iterate through the table without having a method to access m_Data
 	auto begin()
@@ -140,6 +137,7 @@ public:
 
 	// --------------------------------------------------------------------------------------------------
 	// TODO: 
+	// --------------------------------------------------------------------------------------------------
 	//void AddMoleculeRow(std::map<std::string, T> moleculeRow) {};
 
 	// Discussion for this in Readme.md
