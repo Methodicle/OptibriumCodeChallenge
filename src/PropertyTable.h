@@ -9,7 +9,7 @@
 
 
 // Table class where access is [row][col]
-//
+// 
 //
 //
 
@@ -30,6 +30,11 @@ public:
 
 	std::map<std::string, T>  GetPropertyColumn(const std::string& propName)
 	{
+
+		// check if map is empty
+		if (m_Data.empty());
+			throw std::runtime_error("Supplied no data to table, but tried to get property column.");
+
 		std::map<std::string, T> propCol;
 
 		// remember to check the col even exists
@@ -47,6 +52,10 @@ public:
 
 	void PrintTable()
 	{
+		// check if map is empty - won't crash but user could wonder nothing prints.
+		if (m_Data.empty());
+			throw std::runtime_error("Supplied no data to table, but tried to print.");
+
 		for (auto const& [drug, props] : m_Data)
 		{
 			Log("Molecule: " + drug + "\t");
@@ -94,7 +103,8 @@ public:
 					{
 						sumTableProps->emplace(prop, value);
 					}
-					else if ((*sumTableProps)[prop] != value) // assumption here is that properties are the same, can be changed or made specific to certain properties, add different handling if values are different in future.
+					// assumption here is that properties are the same, can be changed or made specific to certain properties, add different handling if values are different in future.
+					else if ((*sumTableProps)[prop] != value)
 					{
 						throw std::runtime_error(std::format("Value for {}'s {} in both tables are different", molecule, prop));
 					}
@@ -105,6 +115,8 @@ public:
 		return sumTable;
 	}
 	
+
+	// Implemented to iterate through the table without having a method to access m_Data
 	auto begin()
 	{
 		return m_Data.begin();
@@ -115,7 +127,7 @@ public:
 		return m_Data.end();
 	}
 
-	auto find(std::string molecule)
+	auto find(std::string& molecule)
 	{
 		return m_Data.find(molecule);
 	}
