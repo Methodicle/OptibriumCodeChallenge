@@ -1,4 +1,4 @@
-#Notes for Improvment/Requested Feature Discussions
+###Notes for Improvment/Requested Feature Discussions
 
 ## Explanation of some implementation choices
  - When it came to combination of tables (using overloaded operator in this case), the table exercise requested a table with molecules and associated properties. 
