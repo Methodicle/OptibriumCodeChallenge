@@ -8,11 +8,6 @@
 
 int main()
 {
-
-    
-    
-
-
     PropertyTable defaultTable;
 
     defaultTable["Paracetamol"]["Solubility"]               = 4.97;
@@ -79,17 +74,3 @@ int main()
     
     std::cin.get();
 }
-
-
-
-
-/*
-    TODO:
-      - for adding new property columns at run time, have a add function that takes a column name and asks if its text /  numeric then run through all the current rows and ask if you'd like to a set a value.
-      - Possibly read in an intial data structre and create coloumns based form that - check when read in if the data read is tect or numeric.
-
-    Explain that I ideally wanted to create templated property columns that would allow bools and other data types to be used as long as they have the right operators.
-    
-
- */
-

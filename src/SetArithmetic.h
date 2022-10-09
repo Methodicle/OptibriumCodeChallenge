@@ -1,7 +1,9 @@
 #pragma once
 #include "PropertyTable.h"
 
+// Functions to do set arithmetic on Tables, separate file as it shouldn't be included in the table class itself
 
+// Function to get a set Union for a given property, returns a map of <molecule, prop_value>
 template<typename T = std::variant<int, std::string, double>>
 std::map<std::string, T> SetUnion(PropertyTable<T> table1, PropertyTable<T> table2, std::string& propName)
 {
@@ -22,6 +24,7 @@ std::map<std::string, T> SetUnion(PropertyTable<T> table1, PropertyTable<T> tabl
 	return unionSet;
 };
 
+// Function to get a set Difference for a given property, returns a map of <molecule, prop_value>
 template<typename T = std::variant<int, std::string, double>>
 std::map<std::string, T> SetDifference(PropertyTable<T>& table1, PropertyTable<T>& table2, std::string& propName)
 {
@@ -52,6 +55,7 @@ std::map<std::string, T> SetDifference(PropertyTable<T>& table1, PropertyTable<T
 	return diffSet;
 };
 
+// Function to get a set Intersection for a given property, returns a map of <molecule, prop_value>
 template<typename T = std::variant<int, std::string, double>>
 std::map<std::string, T>SetIntersection(PropertyTable<T>& table1, PropertyTable<T>& table2, std::string& propName)
 {

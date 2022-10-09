@@ -18,16 +18,19 @@ template<typename T = std::variant<int, std::string, double>>
 class PropertyTable
 {
 public:
+	// Function to check if a molecule exists in the table
 	bool HasMolecule(const std::string& molecule)
 	{
 		return m_Data.find(molecule) != m_Data.end();
 	}
 
+	// Function to check if a given molecule has a given property
 	bool MoleculeHasProperty(const std::string& molecule, const std::string& prop)
 	{
 		return m_Data[molecule].find(prop) != m_Data[molecule].end();
 	}
 
+	// Function that returns a map of <molecule, prop_value> for a given property
 	std::map<std::string, T>  GetPropertyColumn(const std::string& propName)
 	{
 
@@ -50,6 +53,8 @@ public:
 		return propCol;
 	}
 
+
+	// Prints table, mainly for demonstration purposes
 	void PrintTable()
 	{
 		// check if map is empty - won't crash but user could wonder nothing prints.
@@ -69,9 +74,10 @@ public:
 		}
 	};
 
-	std::map<std::string, T>& operator[](std::string x)
+	// Overload of [] operator for getting a map of <property, value> for a given molecue
+	std::map<std::string, T>& operator[](std::string molecule)
 	{
-		return m_Data[x];
+		return m_Data[molecule];
 	}
 
 
@@ -136,10 +142,7 @@ public:
 	// TODO: 
 	//void AddMoleculeRow(std::map<std::string, T> moleculeRow) {};
 
-	/*
-		Here the solution would be to either have an annoying amount of std::cin and allow user entry through the console.
-		Or a more elegant solution would be allowing users to submit small csv files or xml files which could be read in and converted to a new column.
-	*/
+	// Discussion for this in Readme.md
 	//void AddPropertyColumn() {};
 
 	
