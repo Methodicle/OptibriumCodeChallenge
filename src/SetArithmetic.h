@@ -19,8 +19,7 @@ std::map<std::string, T> SetUnion(PropertyTable<T> table1, PropertyTable<T> tabl
 			unionSet.emplace(key, value);
 		}
 	}
-
-
+	
 	return unionSet;
 };
 
@@ -44,13 +43,11 @@ std::map<std::string, T> SetDifference(PropertyTable<T>& table1, PropertyTable<T
 	// do same for any that exist here that don't in tab1
 	for (const auto& [key, value] : tab2Col)
 	{
-
 		if (tab1Col.find(key) == tab1Col.end())
 		{
 			diffSet.emplace(key, value);
 		}
 	}
-
 
 	return diffSet;
 };
