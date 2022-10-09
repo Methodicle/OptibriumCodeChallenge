@@ -73,7 +73,6 @@ public:
 	// Operator Overloads
 	// --------------------------------------------------------------------------------------------------
 	 
-
 	// Overload of [] operator for getting a map of <property, value> for a given molecue
 	std::map<std::string, T>& operator[](std::string molecule)
 	{
@@ -138,6 +137,7 @@ public:
 	// --------------------------------------------------------------------------------------------------
 	// TODO: 
 	// --------------------------------------------------------------------------------------------------
+	
 	//void AddMoleculeRow(std::map<std::string, T> moleculeRow) {};
 
 	// Discussion for this in Readme.md
