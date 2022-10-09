@@ -8,6 +8,6 @@
 
 ## Considerations for adding new property columns at run-time
 
- - Simplest but crude solution, have user console input that looks at each molecule for a property and requests a value or gives and option to skip.
- - Give a file path with xml/csv that has molecule types/properties which is read and adds to table, give option to add new molecules if there are ones that don't exist in the table yet, but do in the file.
- - UI with visual representation of the table, where when edited it updates the table either when a button is pressed ("ok", "confirm" etc.) or as the context shifts on the UI to a new cell.
+ 1. Simplest but crude solution, have user console input that looks at each molecule for a property and requests a value or gives and option to skip.
+ 2. Give a file path with xml/csv that has molecule types/properties which is read and adds to table, give option to add new molecules if there are ones that don't exist in the table yet, but do in the file.
+ 3. UI with visual representation of the table, where when edited it updates the table either when a button is pressed ("ok", "confirm" etc.) or as the context shifts on the UI to a new cell.
