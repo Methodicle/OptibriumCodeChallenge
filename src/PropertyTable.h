@@ -31,7 +31,7 @@ public:
 	{
 
 		// check if map is empty
-		if (m_Data.empty());
+		if (m_Data.empty())
 			throw std::runtime_error("Supplied no data to table, but tried to get property column.");
 
 		std::map<std::string, T> propCol;
@@ -53,7 +53,7 @@ public:
 	void PrintTable()
 	{
 		// check if map is empty - won't crash but user could wonder nothing prints.
-		if (m_Data.empty());
+		if (m_Data.empty())
 			throw std::runtime_error("Supplied no data to table, but tried to print.");
 
 		for (auto const& [drug, props] : m_Data)
@@ -84,7 +84,7 @@ public:
 	// I'd error as they're chemical properties and "Usually" constant like solubility and molecular weight
 	PropertyTable operator+(PropertyTable& table)
 	{
-		PropertyTable sumTable; // think there's something wrong here
+		PropertyTable sumTable; 
 
 		for (const auto& [molecule, value] : m_Data)
 		{

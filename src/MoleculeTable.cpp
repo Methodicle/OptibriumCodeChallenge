@@ -21,6 +21,8 @@ int main()
 
     defaultTable["Trimethoprim"]["Solubility"]              = 3.14;
     defaultTable["Trimethoprim"]["Molecular Weight"]        = 290;
+    defaultTable.PrintTable();
+    Log('\n');
 
     PropertyTable defaultTable2;
 
@@ -36,6 +38,8 @@ int main()
 
     defaultTable2["Trimethoprim2"]["Solubility"] = 3.14;
     defaultTable2["Trimethoprim2"]["Molecular Weight"] = 290;
+    defaultTable2.PrintTable();
+    Log('\n');
 
     try {
         auto sumTab = defaultTable + defaultTable2;
