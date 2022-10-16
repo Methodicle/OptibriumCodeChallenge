@@ -27,7 +27,7 @@ public:
 	}
 
 	// Function that returns a map of <molecule, prop_value> for a given property
-	std::map<std::string, T>  GetPropertyColumn(const std::string& propName)
+	std::map<std::string, T>  GetPropertyColumn(const std::string& propName) const
 	{
 
 		// check if map is empty
@@ -119,17 +119,17 @@ public:
 	}
 
 	// Implemented to iterate through the table without having a method to access m_Data
-	auto begin()
+	const auto begin()
 	{
 		return m_Data.begin();
 	}
 
-	auto end()
+	const auto end()
 	{
 		return m_Data.end();
 	}
 
-	auto find(std::string& molecule)
+	const auto find(std::string& molecule)
 	{
 		return m_Data.find(molecule);
 	}

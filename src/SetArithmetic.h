@@ -5,7 +5,7 @@
 
 // Function to get a set Union for a given property, returns a map of <molecule, prop_value>
 template<typename T = std::variant<int, std::string, double>>
-std::map<std::string, T> SetUnion(PropertyTable<T> table1, PropertyTable<T> table2, std::string& propName)
+std::map<std::string, T> SetUnion(const PropertyTable<T>& table1, const PropertyTable<T>& table2, const std::string& propName)
 {
 	auto tab1Col = table1.GetPropertyColumn(propName);
 	auto tab2Col = table2.GetPropertyColumn(propName);
@@ -25,7 +25,7 @@ std::map<std::string, T> SetUnion(PropertyTable<T> table1, PropertyTable<T> tabl
 
 // Function to get a set Difference for a given property, returns a map of <molecule, prop_value>
 template<typename T = std::variant<int, std::string, double>>
-std::map<std::string, T> SetDifference(PropertyTable<T>& table1, PropertyTable<T>& table2, std::string& propName)
+std::map<std::string, T> SetDifference(const PropertyTable<T>& table1, const PropertyTable<T>& table2, const std::string& propName)
 {
 	auto tab1Col = table1.GetPropertyColumn(propName);
 	auto tab2Col = table2.GetPropertyColumn(propName);
@@ -54,7 +54,7 @@ std::map<std::string, T> SetDifference(PropertyTable<T>& table1, PropertyTable<T
 
 // Function to get a set Intersection for a given property, returns a map of <molecule, prop_value>
 template<typename T = std::variant<int, std::string, double>>
-std::map<std::string, T>SetIntersection(PropertyTable<T>& table1, PropertyTable<T>& table2, std::string& propName)
+std::map<std::string, T>SetIntersection(const PropertyTable<T>& table1, const PropertyTable<T>& table2, const std::string& propName)
 {
 	auto tab1Col = table1.GetPropertyColumn(propName);
 	auto tab2Col = table2.GetPropertyColumn(propName);
